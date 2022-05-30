@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'botao_entrada_tempo.dart';
+
 class EntradaTempo extends StatelessWidget {
   final String titulo;
   final int valor;
@@ -22,28 +24,12 @@ class EntradaTempo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: Icon(Icons.arrow_downward),
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(8),
-                primary: Colors.red,
-              ),
-            ),
+            BotaoEntradaTempo(icone: Icons.arrow_downward),
             Text(
               valor.toString(),
               style: TextStyle(fontSize: 16),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Icon(Icons.arrow_upward),
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(8),
-                primary: Colors.red,
-              ),
-            ),
+            BotaoEntradaTempo(icone: Icons.arrow_upward),
           ],
         ),
       ],
