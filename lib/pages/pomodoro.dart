@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_pomodoro/components/entrada_tempo.dart';
 import 'package:flutter_mobx_pomodoro/store/pomodoro_store.dart';
 import 'package:provider/provider.dart';
@@ -21,18 +22,24 @@ class Pomodoro extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 32),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                EntradaTempo(
-                  titulo: 'Trabalho',
-                  valor: store.tempoTrabalho,
-                ),
-                EntradaTempo(
-                  titulo: 'Descanso',
-                  valor: store.tempoDescanso,
-                ),
-              ],
+            child: Observer(
+              builder: (_) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  EntradaTempo(
+                    titulo: 'Trabalho',
+                    valor: store.tempoTrabalho,
+                    incremento: store.incrementarTempoTrabalho,
+                    decremento: store.decrementarTempoTrabalho,
+                  ),
+                  EntradaTempo(
+                    titulo: 'Descanso',
+                    valor: store.tempoDescanso,
+                    incremento: store.incrementarTempoDescanso,
+                    decremento: store.decrementarTempoDescanso,
+                  ),
+                ],
+              ),
             ),
           ),
         ],

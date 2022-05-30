@@ -5,10 +5,14 @@ import 'botao_entrada_tempo.dart';
 class EntradaTempo extends StatelessWidget {
   final String titulo;
   final int valor;
+  final void Function()? incremento;
+  final void Function()? decremento;
   const EntradaTempo({
     Key? key,
     required this.titulo,
     required this.valor,
+    this.incremento,
+    this.decremento,
   }) : super(key: key);
 
   @override
@@ -24,12 +28,18 @@ class EntradaTempo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            BotaoEntradaTempo(icone: Icons.arrow_downward),
+            BotaoEntradaTempo(
+              icone: Icons.arrow_downward,
+              onPressed: this.decremento,
+            ),
             Text(
               valor.toString(),
               style: TextStyle(fontSize: 16),
             ),
-            BotaoEntradaTempo(icone: Icons.arrow_upward),
+            BotaoEntradaTempo(
+              icone: Icons.arrow_upward,
+              onPressed: this.incremento,
+            ),
           ],
         ),
       ],
