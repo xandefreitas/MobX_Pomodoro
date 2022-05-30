@@ -12,9 +12,40 @@ class EntradaTempo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(titulo),
-        Text(valor.toString()),
+        Text(
+          titulo,
+          style: TextStyle(fontSize: 24),
+        ),
+        SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              child: Icon(Icons.arrow_downward),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(8),
+                primary: Colors.red,
+              ),
+            ),
+            Text(
+              valor.toString(),
+              style: TextStyle(fontSize: 16),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Icon(Icons.arrow_upward),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(8),
+                primary: Colors.red,
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
