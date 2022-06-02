@@ -89,6 +89,22 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
     });
   }
 
+  late final _$tipoIntervaloAtom =
+      Atom(name: '_PomodoroStore.tipoIntervalo', context: context);
+
+  @override
+  TipoIntervalo get tipoIntervalo {
+    _$tipoIntervaloAtom.reportRead();
+    return super.tipoIntervalo;
+  }
+
+  @override
+  set tipoIntervalo(TipoIntervalo value) {
+    _$tipoIntervaloAtom.reportWrite(value, super.tipoIntervalo, () {
+      super.tipoIntervalo = value;
+    });
+  }
+
   late final _$_PomodoroStoreActionController =
       ActionController(name: '_PomodoroStore', context: context);
 
@@ -137,22 +153,22 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
   }
 
   @override
-  void incrementarTempoDescanso() {
+  void decrementarTempoTrabalho() {
     final _$actionInfo = _$_PomodoroStoreActionController.startAction(
-        name: '_PomodoroStore.incrementarTempoDescanso');
+        name: '_PomodoroStore.decrementarTempoTrabalho');
     try {
-      return super.incrementarTempoDescanso();
+      return super.decrementarTempoTrabalho();
     } finally {
       _$_PomodoroStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void decrementarTempoTrabalho() {
+  void incrementarTempoDescanso() {
     final _$actionInfo = _$_PomodoroStoreActionController.startAction(
-        name: '_PomodoroStore.decrementarTempoTrabalho');
+        name: '_PomodoroStore.incrementarTempoDescanso');
     try {
-      return super.decrementarTempoTrabalho();
+      return super.incrementarTempoDescanso();
     } finally {
       _$_PomodoroStoreActionController.endAction(_$actionInfo);
     }
@@ -176,7 +192,8 @@ iniciado: ${iniciado},
 minutos: ${minutos},
 segundos: ${segundos},
 tempoTrabalho: ${tempoTrabalho},
-tempoDescanso: ${tempoDescanso}
+tempoDescanso: ${tempoDescanso},
+tipoIntervalo: ${tipoIntervalo}
     ''';
   }
 }

@@ -14,35 +14,35 @@ class Pomodoro extends StatelessWidget {
     final store = Provider.of<PomodoroStore>(context);
 
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Cronometro(),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            child: Observer(
-              builder: (_) => Row(
+      body: Observer(
+        builder: (_) => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Cronometro(),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 32),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   EntradaTempo(
                     titulo: 'Trabalho',
                     valor: store.tempoTrabalho,
-                    incremento: store.incrementarTempoTrabalho,
-                    decremento: store.decrementarTempoTrabalho,
+                    incremento: store.trabalhoEmAndamento ? null : store.incrementarTempoTrabalho,
+                    decremento: store.trabalhoEmAndamento ? null : store.decrementarTempoTrabalho,
                   ),
                   EntradaTempo(
                     titulo: 'Descanso',
                     valor: store.tempoDescanso,
-                    incremento: store.incrementarTempoDescanso,
-                    decremento: store.decrementarTempoDescanso,
+                    incremento: store.descansoEmAndamento ? null : store.incrementarTempoDescanso,
+                    decremento: store.descansoEmAndamento ? null : store.decrementarTempoDescanso,
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

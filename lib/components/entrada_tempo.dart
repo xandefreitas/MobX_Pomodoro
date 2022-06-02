@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'botao_entrada_tempo.dart';
 
@@ -30,7 +31,7 @@ class EntradaTempo extends StatelessWidget {
           children: [
             BotaoEntradaTempo(
               icone: Icons.arrow_downward,
-              onPressed: this.decremento,
+              onPressed: decremento,
             ),
             Text(
               valor.toString(),
@@ -38,7 +39,7 @@ class EntradaTempo extends StatelessWidget {
             ),
             BotaoEntradaTempo(
               icone: Icons.arrow_upward,
-              onPressed: this.incremento,
+              onPressed: incremento,
             ),
           ],
         ),
